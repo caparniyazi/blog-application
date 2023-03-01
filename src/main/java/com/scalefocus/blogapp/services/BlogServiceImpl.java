@@ -23,6 +23,16 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
+	public List<Blog> findByTitle(String title) {
+		return blogRepository.findByTitleLikeIgnoreCase(title);
+	}
+
+	@Override
+	public List<Blog> findByShortSummary(String shortSummary) {
+		return blogRepository.findByShortSummaryContainingIgnoreCase(shortSummary);
+	}
+
+	@Override
 	public List<Blog> getAll() {
 		return blogRepository.findAll();
 	}

@@ -31,6 +31,16 @@ public class BlogController {
 		return blog.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
+	@GetMapping("/blogPost/title/{title}")
+	public ResponseEntity<List<Blog>> getBlogByTitle(@PathVariable String title) {
+		return new ResponseEntity<>(blogService.findByTitle(title), HttpStatus.OK);
+	}
+
+	@GetMapping("/blogPost/summary/{shortSummary}")
+	public ResponseEntity<List<Blog>> getBlogByShortSummary(@PathVariable String shortSummary) {
+		return new ResponseEntity<>(blogService.findByShortSummary(shortSummary), HttpStatus.OK);
+	}
+
 	@PostMapping(path = "/saveBlogPost")
 	@Transactional
 	public ResponseEntity<?> save(@RequestBody @Valid Blog blog) {

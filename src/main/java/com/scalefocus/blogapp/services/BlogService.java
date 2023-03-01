@@ -11,4 +11,8 @@ public interface BlogService {
     List<Blog> getAll();
 
     Optional<Blog> findById(Long id);
+
+    List<Blog> findByTitle(String title);
+
+    List<Blog> findByShortSummary(String title);
 }
